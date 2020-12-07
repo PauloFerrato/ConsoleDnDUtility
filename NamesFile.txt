@@ -1,0 +1,12 @@
+#land
+#mount
+#river
+#road
+#shore
+#town
+#ville
+&Farm
+&Rock
+&Weasel
+&Wheat
+&Wine
