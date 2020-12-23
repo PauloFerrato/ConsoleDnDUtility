@@ -20,8 +20,8 @@ namespace ConsoleDnDUtility
             }
         }
 
-        public List<string> setlementName;
-        public List<string> setlementType;
+        private List<string> setlementName;
+        private List<string> setlementType;
 
         public static bool InLoop { get { return Instance.inLoop; } }
         private bool inLoop = true;
@@ -31,7 +31,7 @@ namespace ConsoleDnDUtility
 
         public static void Setup()
         {
-            Instance.completeFile = PersistenceHandler.ReadFile();
+            Instance.completeFile = FileHandler.ReadFile();
             if (Instance.completeFile == null) Instance.completeFile = new List<string>();
             Instance.setlementName = Instance.PickFromKey(UtilsKeysNAdresses.SETLEMENT_NAME_KEY);
             Instance.setlementType = Instance.PickFromKey(UtilsKeysNAdresses.SETLEMENT_TYPE_KEY);
@@ -104,20 +104,20 @@ namespace ConsoleDnDUtility
         private void AddToSettlementName(string stringToAdd)
         {
             if(!setlementName.Contains(stringToAdd))setlementName.Add(stringToAdd);
-            AddLineToFile(UtilsKeysNAdresses.SETLEMENT_NAME_KEY + stringToAdd);
+            AddLine(UtilsKeysNAdresses.SETLEMENT_NAME_KEY + stringToAdd);
         }
         private void AddToSettlementType(string stringToAdd)
         {
             if(!setlementType.Contains(stringToAdd))setlementType.Add(stringToAdd);
-            AddLineToFile(UtilsKeysNAdresses.SETLEMENT_TYPE_KEY + stringToAdd);
+            AddLine(UtilsKeysNAdresses.SETLEMENT_TYPE_KEY + stringToAdd);
         }
-        private void AddLineToFile(string line)
+        private void AddLine(string line)
         {
             if (!completeFile.Contains(line))
             {
                 completeFile.Add(line);
 
-                PersistenceHandler.WriteFile(completeFile);
+                FileHandler.WriteFile(completeFile);
             }
         }
         private void RemoveFromFile(string toRemove)
@@ -130,7 +130,7 @@ namespace ConsoleDnDUtility
                     break;
                 }
             }
-            PersistenceHandler.WriteFile(completeFile);
+            FileHandler.WriteFile(completeFile);
         }
         private string GetAllFile()
         {

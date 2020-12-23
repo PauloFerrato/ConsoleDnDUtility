@@ -4,7 +4,7 @@ using System.IO;
 
 namespace ConsoleDnDUtility
 {
-    static class PersistenceHandler
+    static class FileHandler
     {
 
         public static List<string> ReadFile()
